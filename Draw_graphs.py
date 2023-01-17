@@ -1,8 +1,13 @@
-from CurrencyNBP_get_data import prize_in_pln
 import matplotlib.pyplot as plt
+from CurrencyNBP_get_data import prize_in_pln
 
-print(prize_in_pln())
+data = prize_in_pln()
+x = data[0]
+y = data[1]
 
-fig, ax = plt.subplots()  # Utwórz figurę zawierającą pojedyncze osie.
-ax.plot([1, 2, 3, 4], [1, 4, 2, 3])  # Narysuj niektóre dane na osiach.
+# plt.figure().set_figwidth(15)
+# plt.figure().set_figheight(7)
+plt.rcParams['figure.figsize'] = [15, 7]
+plt.plot(x, y)  # Narysuj niektóre dane na osiach.
+
 plt.show()
