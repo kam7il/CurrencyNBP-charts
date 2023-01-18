@@ -46,7 +46,7 @@ def prize_in_pln():
         print("Nie ma danych w podanej dacie")
         sys.exit()
 
-    data_for_charts = [[], []]
+    data_for_charts = [[], [], [user_currency_code]]
 
     len_of_rates = len(data_single_currency_date_json["rates"])
 
