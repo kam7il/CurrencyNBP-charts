@@ -6,12 +6,10 @@ data = prize_in_pln()
 x = data[0]
 y = data[1]
 
-
-# plt.figure().set_figwidth(15)
-# plt.figure().set_figheight(7)
-# plt.rcParams['figure.figsize'] = [15, 7]
-
-plt.rcParams['figure.autolayout'] = "True"
-plt.figure(f"Chart of {data[2][0]}/PLN")
-plt.plot(x, y)  # Narysuj niektóre dane na osiach.
+fig, ax1 = plt.subplots()
+fig.tight_layout(pad=4)
+ax1.plot(x, y, color="green", linewidth=3)
+ax1.tick_params("y", colors="blue")
+fig.autofmt_xdate()
+ax1.set(title=f"Chart of {data[2][0]}/PLN", xlabel="Date", ylabel="PLN")
 plt.show()
