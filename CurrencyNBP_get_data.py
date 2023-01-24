@@ -12,8 +12,8 @@ def prize_in_pln():
 
     a = True
     while a:
-        # user_currency_code = input("Jaką walute chcesz sprawdzić? ").upper()
-        user_currency_code = "USD"
+        user_currency_code = input("Jaką walute chcesz sprawdzić? ").upper()
+        # user_currency_code = "USD"
 
         # czy kod waluty istnieje
         for x in range(0, amount_of_currencies):
@@ -23,10 +23,10 @@ def prize_in_pln():
             elif amount_of_currencies == x and a is True:  # jeśli nie jest
                 print("Nie ma takiego kodu waluty")
 
-    # user_date_input_start = input("Podaj date początkową (RRRR-MM-DD): ")
-    user_date_input_start = "2022-01-01"
-    # user_date_input_end = input("Podaj date końcową(RRRR-MM-DD): ")
-    user_date_input_end = "2022-02-28"
+    user_date_input_start = input("Podaj date początkową (RRRR-MM-DD): ")
+    # user_date_input_start = "2022-01-01"
+    user_date_input_end = input("Podaj date końcową(RRRR-MM-DD): ")
+    # user_date_input_end = "2022-02-28"
 
     try:
         datetime.fromisoformat(user_date_input_start)
