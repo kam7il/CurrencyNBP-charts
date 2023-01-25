@@ -1,10 +1,17 @@
 import sys
 from datetime import datetime
+import requests.exceptions
 from requests import get, JSONDecodeError
 
 
 def prize_in_pln():
-    data_all_currency = get("https://api.nbp.pl/api/exchangerates/tables/a/?format=json")
+    user_currency_code = ""
+    try:
+        data_all_currency = get("https://api.nbp.pl/api/exchangerates/tables/a/?format=json")
+    except requests.exceptions.RequestException:
+        print("Błąd połączenia")
+        sys.exit()
+
     data_all_currency_json = data_all_currency.json()
 
     amount_of_currencies = len(data_all_currency_json[0]["rates"])  # ilosc walut
@@ -14,6 +21,7 @@ def prize_in_pln():
     while a:
         user_currency_code = input("Jaką walute chcesz sprawdzić? ").upper()
         # user_currency_code = "USD"
+        # user_currency_code = "EUR"
 
         # czy kod waluty istnieje
         for x in range(0, amount_of_currencies):
@@ -35,9 +43,12 @@ def prize_in_pln():
         print("Błędny format daty lub data nie poprawna")
         sys.exit()
 
-    data_single_currency_date = get(
-        f"https://api.nbp.pl/api/exchangerates/rates/a/{user_currency_code}/{user_date_input_start}/{user_date_input_end}"
-        f"/?format=json")
+    try:
+        data_single_currency_date = get(f"https://api.nbp.pl/api/exchangerates/rates/a/{user_currency_code}"
+                                        f"/{user_date_input_start}/{user_date_input_end}/?format=json")
+    except requests.exceptions.RequestException:
+        print("Błąd połączenia")
+        sys.exit()
 
     try:
         data_single_currency_date_json = data_single_currency_date.json()

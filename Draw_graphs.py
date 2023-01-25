@@ -11,12 +11,14 @@ fig, ax1 = plt.subplots()
 fig.canvas.manager.set_window_title(f"Chart of {data[2][0]}/PLN")  # tytuł okna
 ax1.plot(x_data_pd, y_data, color="green", linewidth=3)  # linia właściwości
 ax1.tick_params("y", colors="blue")  # parametry skali y
-fig.autofmt_xdate()  # auto rotacja daty
+# fig.autofmt_xdate()  # auto rotacja daty
 ax1.set(title=f"Chart of {data[2][0]}/PLN", ylabel="PLN")  # etykiety
 ax1.xaxis.grid(True)  # pomocnicze linie x
 ax1.yaxis.grid(True)  # pomocnicze linie y
 
-locator = mdates.AutoDateLocator(minticks=3, maxticks=15)
+# formatowanie daty
+locator = mdates.AutoDateLocator(minticks=3, maxticks=15)  # min max skala
 ax1.xaxis.set_major_locator(locator)
 ax1.xaxis.set_major_formatter(mdates.ConciseDateFormatter(locator))
+
 plt.show()
